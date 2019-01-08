@@ -1,0 +1,9 @@
+[package]
+name = "crawler"
+version = "0.1.0"
+authors = ["Victor Igor <victor.0w3@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+select = "0.4.2"
+reqwest = "0.9.6"
