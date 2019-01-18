@@ -122,14 +122,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "crawler"
-version = "0.1.0"
-dependencies = [
- "reqwest 0.9.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "select 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "crc32fast"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1120,6 +1112,14 @@ dependencies = [
  "quote 0.6.10 (registry+https://github.com/rust-lang/crates.io-index)",
  "syn 0.15.24 (registry+https://github.com/rust-lang/crates.io-index)",
  "unicode-xid 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "teams-list"
+version = "0.1.0"
+dependencies = [
+ "reqwest 0.9.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "select 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
