@@ -13,9 +13,11 @@ const fs = require('fs');
 
 	await page.goto('https://globoesporte.globo.com/sp/futebol/campeonato-paulista/');
 
+	const rootPath = './championships/paulista-2019/first-phase';
+
 	// Browser Dependencies
-	await page.addScriptTag({ path: './node_modules/safedom/build/dist/safedom.min.js' })
-	await page.addScriptTag({ path: './node_modules/ramda/dist/ramda.min.js' })
+	await page.addScriptTag({ path: `${rootPath}/node_modules/safedom/build/dist/safedom.min.js` })
+	await page.addScriptTag({ path: `${rootPath}/node_modules/ramda/dist/ramda.min.js` })
 
 	const tournamentData = await page.evaluate(() => {
 		const R = window.R;
@@ -88,7 +90,7 @@ const fs = require('fs');
 		};
 	});
 
-	fs.writeFile('result.json', JSON.stringify(tournamentData), function(err) {
+	fs.writeFile(`${rootPath}/result.json`, JSON.stringify(tournamentData), function(err) {
 		if (err) {
 			console.log('[ Error ] - On write results file!');
 			throw err;

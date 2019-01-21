@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "@mjnr",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "ramda": "^0.26.1",
-    "safedom": "^0.1.5"
+    "ramda": "0.26.1",
+    "safedom": "0.1.5"
   },
   "dependencies": {
     "puppeteer": "^1.11.0"
