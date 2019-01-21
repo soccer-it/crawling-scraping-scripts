@@ -4,7 +4,7 @@
 
 ### Running
 ```sh
-$ node index.js
+$ node championships/paulista-2019/first-phase
 ```
 
 ### Expected Result
