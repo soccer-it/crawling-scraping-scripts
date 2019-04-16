@@ -16,15 +16,15 @@ window.getTeams = () => {
   const byTeam = mapIndexed((team, index) => {
     const id = add(index, 1);
 
-    const name = safedom
-      .select(TEAM_NAME_SELECTOR, team)
-      .map(getTextContent)
-      .getOrElse("");
+    const getElementText = selector =>
+      safedom
+        .select(selector, team)
+        .map(getTextContent)
+        .getOrElse("");
 
-    const slug = safedom
-      .select(TEAM_NAME_SLUG, team)
-      .map(getTextContent)
-      .getOrElse("");
+    const name = getElementText(TEAM_NAME_SELECTOR);
+
+    const slug = getElementText(TEAM_NAME_SLUG);
 
     return {
       name,
