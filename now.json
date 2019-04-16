@@ -1,0 +1,10 @@
+{
+  "name": "soccer-it-crawling-scraping",
+  "alias": ["soccer-it"],
+  "version": 2,
+  "public": true,
+  "builds": [{ "src": "output/**/*", "use": "@now/static" }],
+  "github": {
+    "enabled": false
+  }
+}

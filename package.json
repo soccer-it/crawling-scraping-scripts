@@ -1,0 +1,22 @@
+{
+  "name": "soccer-it-crawling-scraping",
+  "version": "1.0.0",
+  "description": "Crawlers that collects information for soccer-it",
+  "main": "index.js",
+  "repository": "git@github.com:soccer-it/crawling-scraping-scripts.git",
+  "author": "Milson Ramos de Carvalho Júnior <junior.milson17@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "node_modules/.bin/now --",
+    "build": "node_modules/.bin/parcel build scrapers/$SCRAPER/**.js --out-dir output/$SCRAPER/ && yarn run deploy"
+  },
+  "devDependencies": {
+    "now": "^15.0.4",
+    "parcel-bundler": "1.12.3",
+    "puppeteer": "1.14.0"
+  },
+  "dependencies": {
+    "ramda": "0.26.1",
+    "safedom": "0.1.9"
+  }
+}
