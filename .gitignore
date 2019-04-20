@@ -3,4 +3,5 @@ node_modules
 debug
 target
 .DS_Store
+config.json
 **/*.rs.bk

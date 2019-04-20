@@ -2904,7 +2904,7 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
 
-now@^15.0.4:
+now@15.0.4:
   version "15.0.4"
   resolved "https://registry.yarnpkg.com/now/-/now-15.0.4.tgz#68e8a1ec59170c69bdc5059310fb623359168e0f"
 
@@ -3971,6 +3971,10 @@ shebang-command@^1.2.0:
 shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
+
+shorthash@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/shorthash/-/shorthash-0.0.2.tgz#59b268eecbde59038b30da202bcfbddeb2c4a4eb"
 
 sigmund@^1.0.1:
   version "1.0.1"
