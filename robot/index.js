@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-const config = require("../config.json");
+const config = require("../config.js");
 const argv = require("minimist")(process.argv.slice(2));
 
 const { scraper } = argv;
