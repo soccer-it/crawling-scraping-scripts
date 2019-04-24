@@ -1,22 +1,24 @@
 {
   "name": "soccer-it-crawling-scraping",
   "version": "1.0.0",
-  "description": "Crawlers that collects information for soccer-it",
+  "description": "Crawlers that collects information for soccer it",
   "main": "index.js",
   "repository": "git@github.com:soccer-it/crawling-scraping-scripts.git",
-  "author": "SoccerIT - Um novo jeito de torcer",
+  "author": "soccer it - Um novo jeito de torcer",
   "license": "MIT",
   "scripts": {
     "deploy": "node_modules/.bin/now --",
-    "build": "node_modules/.bin/parcel build app/scrapers/$SCRAPER/**.js --out-dir output/$SCRAPER/",
-    "run:robot": "yarn run build && node robot --scraper=$SCRAPER"
+    "build": "SCRAPER=$SCRAPER node_modules/.bin/parcel build app/scrapers/$SCRAPER/**.js --out-dir output/$SCRAPER/",
+    "run:robot": "node robot --scraper=$SCRAPER"
   },
   "devDependencies": {
-    "minimist": "^1.2.0",
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
+    "minimist": "1.2.0",
     "now": "15.0.4",
     "parcel-bundler": "1.12.3",
     "puppeteer": "1.14.0",
-    "shorthash": "^0.0.2"
+    "shorthash": "0.0.2"
   },
   "dependencies": {
     "ramda": "0.26.1",
