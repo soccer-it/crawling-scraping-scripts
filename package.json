@@ -11,12 +11,16 @@
     "build": "SCRAPER=$SCRAPER node_modules/.bin/parcel build app/scrapers/$SCRAPER/**.js --out-dir output/$SCRAPER/",
     "run:robot": "node robot --scraper=$SCRAPER"
   },
+  "pre-commit": {
+    "run": "git secret hide"
+  },
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-preset-env": "1.7.0",
     "minimist": "1.2.0",
     "now": "15.0.4",
     "parcel-bundler": "1.12.3",
+    "pre-commit": "1.2.2",
     "puppeteer": "1.14.0",
     "shorthash": "0.0.2"
   },
