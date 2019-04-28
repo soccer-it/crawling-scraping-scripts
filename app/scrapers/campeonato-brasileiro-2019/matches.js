@@ -6,11 +6,9 @@ import pipe from "ramda/src/pipe";
 import find from "ramda/src/find";
 import propEq from "ramda/src/propEq";
 
-import { indexedReduce } from "../../helpers";
+import { indexedReduce, getConfig } from "../../helpers";
 
-const SCRAPER = process.env.SCRAPER;
-
-const config = require("../../../config");
+const config = getConfig();
 
 const {
   API_URL,
@@ -20,7 +18,7 @@ const {
   teamNameVariable,
   matchVariables,
   numberOfRounds
-} = config.scrapers[SCRAPER];
+} = config;
 
 const createRound = add(1);
 
