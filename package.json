@@ -1,7 +1,7 @@
 {
   "name": "soccer-it-crawling-scraping",
   "version": "1.0.0",
-  "description": "Crawlers that collects information for soccer it",
+  "description": "Simple collection of crawling/scraping scripts that collects data for soccer it",
   "main": "index.js",
   "repository": "git@github.com:soccer-it/crawling-scraping-scripts.git",
   "author": "soccer it - Um novo jeito de torcer",
