@@ -1,4 +1,5 @@
 .cache
+.serverless
 node_modules
 output/**
 debug
