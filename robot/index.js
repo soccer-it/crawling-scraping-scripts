@@ -1,37 +1,67 @@
-const puppeteer = require("puppeteer");
-const fs = require("fs");
+const puppeteer = require("puppeteer-core");
+const getChrome = require("./getChrome");
 const config = require("../config.js");
-const argv = require("minimist")(process.argv.slice(2));
 
-const { scraper } = argv;
+module.exports.handler = async (event, context, callback) => {
+  const baseHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": true,
+    "access-control-allow-methods": "GET"
+  };
 
-const { siteUrl, scriptUrl } = config.scrapers[scraper];
+  if (!event.queryStringParameters) {
+    callback(null, {
+      statusCode: 400,
+      headers: baseHeaders,
+      body: "Scraper is not defined"
+    });
+  }
 
-(async () => {
+  const scraper = event.queryStringParameters.scraper;
+
+  const { siteUrl, scriptUrl } = config.scrapers[scraper];
+
   console.log("Scraping data ...");
 
-  const browser = await puppeteer.launch();
+  context.callbackWaitsForEmptyEventLoop = false;
+  const chrome = await getChrome();
+
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: chrome.endpoint
+  });
+
   const page = await browser.newPage();
-  await page.goto(siteUrl);
+
+  await page.setViewport({
+    width: 1920,
+    height: 1080,
+    isMobile: true
+  });
+
+  await page.goto(siteUrl, {
+    waitUntil: ["domcontentloaded", "networkidle2"]
+  });
 
   await page.addScriptTag({ url: scriptUrl });
 
-  const data = await page.evaluate(() => window.scrapeData());
+  try {
+    const scraperData = await page.evaluate(() => window.scrapeData());
 
-  fs.writeFile(
-    `./data_${scraper}_${new Date().getTime()}.json`,
-    JSON.stringify(data),
-    err => {
-      if (err) {
-        console.error("[ Robot ] - Error on write scraper result");
-      } else {
-        console.log("[ Robot ] - Date written!");
-      }
-    }
-  );
+    callback(null, {
+      statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+        ...baseHeaders
+      },
+      body: JSON.stringify(scraperData)
+    });
 
-  console.log("Done!");
-  await browser.close();
+    console.log("Done!", scraperData);
 
-  process.exit();
-})();
+    await browser.close();
+
+    return scraperData;
+  } catch (err) {
+    callback(e);
+  }
+};
