@@ -1,6 +1,6 @@
 app: soccer-it
 tenant: mjunior
-service: soccer-it-crawling-scraping
+service: scraper
 
 provider:
   name: aws
