@@ -13,26 +13,18 @@
     "deploy:scraper": "./node_modules/.bin/serverless deploy",
     "dev:scraper": "./node_modules/.bin/serverless offline start"
   },
-  "pre-commit": {
-    "run": "git secret hide"
-  },
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-preset-env": "1.7.0",
-    "now": "15.0.4",
+    "now": "16.3.1",
     "parcel-bundler": "1.12.3",
     "pre-commit": "1.2.2",
     "ramda": "0.26.1",
     "safedom": "0.1.9",
-    "serverless": "^1.46.1",
-    "serverless-offline": "^5.5.0",
-    "serverless-plugin-chrome": "^1.0.0-55",
     "shorthash": "0.0.2"
   },
   "dependencies": {
-    "@serverless-chrome/lambda": "^1.0.0-55",
-    "chrome-launcher": "^0.10.7",
-    "puppeteer-core": "^1.18.1",
+    "puppeteer": "^1.20.0",
     "superagent": "^5.1.0"
   }
 }

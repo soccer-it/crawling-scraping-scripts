@@ -1,33 +1,16 @@
-const puppeteer = require("puppeteer-core");
-const getChrome = require("./getChrome");
+const puppeteer = require("puppeteer");
+const fs = require("fs");
 const config = require("../config.js");
 
-module.exports.handler = async (event, context, callback) => {
-  const baseHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Credentials": true,
-    "access-control-allow-methods": "GET"
-  };
-
-  if (!event.queryStringParameters) {
-    callback(null, {
-      statusCode: 400,
-      headers: baseHeaders,
-      body: "Scraper is not defined"
-    });
-  }
-
-  const scraper = event.queryStringParameters.scraper;
+(async () => {
+  const scraper = "campeonato-brasileiro-2019";
 
   const { siteUrl, scriptUrl } = config.scrapers[scraper];
 
   console.log("Scraping data ...");
 
-  context.callbackWaitsForEmptyEventLoop = false;
-  const chrome = await getChrome();
-
-  const browser = await puppeteer.connect({
-    browserWSEndpoint: chrome.endpoint
+  const browser = await puppeteer.launch({
+    headless: false
   });
 
   const page = await browser.newPage();
@@ -47,14 +30,11 @@ module.exports.handler = async (event, context, callback) => {
   try {
     const scraperData = await page.evaluate(() => window.scrapeData());
 
-    callback(null, {
-      statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-        ...baseHeaders
-      },
-      body: JSON.stringify(scraperData)
-    });
+    fs.writeFileSync(
+      `scraper_${scraper}_result_${new Date().getTime()}.json`,
+      JSON.stringify(scraperData),
+      "utf-8"
+    );
 
     console.log("Done!", scraperData);
 
@@ -62,6 +42,6 @@ module.exports.handler = async (event, context, callback) => {
 
     return scraperData;
   } catch (err) {
-    callback(e);
+    console.log("Error on scraping", err);
   }
-};
+})();

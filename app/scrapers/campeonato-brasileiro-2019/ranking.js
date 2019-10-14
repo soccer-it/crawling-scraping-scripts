@@ -52,9 +52,10 @@ const getRanking = teams => {
 
   const getLastResultState = stat =>
     safedom
-      .select(`.${CURRENT_RESULT_STATE}`, stat)
+      .selectAll(`.${CURRENT_RESULT_STATE}`, stat)
       .map(
         pipe(
+          last,
           getClassList,
           prop("1"),
           pipe(
